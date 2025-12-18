@@ -134,14 +134,14 @@ export default function Login() {
   }
 
   return (
-    <div style={{ backgroundColor: "white", margin: "15px", boxShadow: "2px 2px 10px #BFBFBF" }}>
+    <div className="body" style={{ backgroundColor: "white", margin: "15px", boxShadow: "2px 2px 10px #BFBFBF" }}>
       {modalAdd  && <ModalAddMedis GetResponseData={GetResponseData} idAdd={idAdd} show={modalAdd} onHide={() => setModalAdd(false)} />}
       {modalUpdate && <ModalUpdateMedis GetResponseData={GetResponseData} idAdd={idAdd} iconUpdate={iconUpdate} id={id} show={modalUpdate} onHide={() => setModalUpdate(false)} />}
       {loading && <LoaderHome />}
       
       {isTabletOrMobile ? 
         <div style={{ paddingLeft: "0px", width: "100%", borderBottom: "5px solid #EEEEEE", display: "", padding: "0px 0px 10px 0px" }}>
-          <Col xl="6" style={{fontSize:"16px",display:"flex", justifyContent:"center", alignItems:"center", padding:"7px", color:"white", backgroundColor:"#005A9F"}}>
+          <Col xl="6" style={{fontSize:"16px",display:"flex", justifyContent:"center", alignItems:"center", padding:"7px"}}>
               <FaListAlt style={{marginRight:"5px"}}/>List Role Permission
           </Col>
           <Col className="mt-2" xl="6" style={{ display: "flex", justifyContent:"end", paddingRight:"5px" }}>
@@ -165,8 +165,8 @@ export default function Login() {
           </Col>
         </div>
           :
-        <div style={{ paddingLeft: "0px", width: "100%", borderBottom: "5px solid #EEEEEE", display: "flex", padding: "10px 20px 10px 0px",backgroundColor:"#005A9F", borderRadius:"5px" }}>
-          <div style={{flex:"50%",fontSize:"16px",display:"flex", alignItems:"center", paddingLeft:"10px", color:"white"}}>
+        <div style={{ paddingLeft: "0px", width: "100%", borderBottom: "5px solid #EEEEEE", display: "flex", padding: "10px 20px 10px 0px", borderRadius:"5px" }}>
+          <div style={{flex:"50%",fontSize:"16px",display:"flex", alignItems:"center", paddingLeft:"10px", }}>
             <FaListAlt style={{marginRight:"5px"}}/>List Role Permission
           </div>
           <div style={{ flex: "50%", display: "flex", justifyContent:"end" }}>
@@ -183,7 +183,7 @@ export default function Login() {
               </div>
               </div> */}
             </div>
-            <div onClick={viewModalAdd} style={{display:"flex",alignItems:"center",marginRight:"5px",backgroundColor:"white",color:"#005A9F",padding:"8px 10px", borderRadius:"3px", cursor:"pointer", fontSize:"12px", cursor:"pointer"}}>
+            <div onClick={viewModalAdd} style={{display:"flex",alignItems:"center",marginRight:"5px",backgroundColor:"#0abcd7ff",color:"#fff",padding:"8px 10px", borderRadius:"3px", cursor:"pointer", fontSize:"14px", cursor:"pointer"}}>
               <div>
                 <FaPlusCircle/> &nbsp;
               </div>
@@ -274,19 +274,19 @@ export default function Login() {
             <table className="table dt-responsive nowrap w-100" id="basic-datatable">
               <thead>
                 <tr style={{backgroundColor: isTabletOrMobile? "white" : "white", borderBottom:"1px solid #BCBCBC"}}>
-                  <th style={{ fontFamily: "revert", fontSize: "12px", textAlign: "center", color: "#525252", border: "none", fontFamily: "sans-serif" }}>No</th>
-                  <th style={{ fontFamily: "revert", fontSize: "12px", textAlign: "", color: "#525252", border: "none", fontFamily: "sans-serif" }}>Nama Menu</th>
-                  <th style={{ fontFamily: "revert", fontSize: "12px", textAlign: "", color: "#525252", border: "none", fontFamily: "sans-serif" }}>Url</th>
-                  <th style={{ fontFamily: "revert", fontSize: "12px", textAlign: "center", color: "#525252", border: "none", fontFamily: "sans-serif" }}>Create</th>
-                  <th style={{ fontFamily: "revert", fontSize: "12px", textAlign: "center", color: "#525252", border: "none", fontFamily: "sans-serif" }}>Read</th>
-                  <th style={{ fontFamily: "revert", fontSize: "12px", textAlign: "center", color: "#525252", border: "none", fontFamily: "sans-serif" }}>Update</th>
-                  <th style={{ fontFamily: "revert", fontSize: "12px", textAlign: "center", color: "#525252", border: "none", fontFamily: "sans-serif" }}>Delete</th>
-                  <th style={{fontFamily:"revert",fontSize:"12px",textAlign:"center", color:"#525252",border:"none", fontFamily:"sans-serif"}}>Action</th>
+                  <th style={{ fontFamily: "revert", fontSize: "14px", textAlign: "center", color: "#525252", border: "none", fontFamily: "sans-serif" }}>No</th>
+                  <th style={{ fontFamily: "revert", fontSize: "14px", textAlign: "", color: "#525252", border: "none", fontFamily: "sans-serif" }}>Nama Menu</th>
+                  <th style={{ fontFamily: "revert", fontSize: "14px", textAlign: "", color: "#525252", border: "none", fontFamily: "sans-serif" }}>Url</th>
+                  <th style={{ fontFamily: "revert", fontSize: "14px", textAlign: "center", color: "#525252", border: "none", fontFamily: "sans-serif" }}>Create</th>
+                  <th style={{ fontFamily: "revert", fontSize: "14px", textAlign: "center", color: "#525252", border: "none", fontFamily: "sans-serif" }}>Read</th>
+                  <th style={{ fontFamily: "revert", fontSize: "14px", textAlign: "center", color: "#525252", border: "none", fontFamily: "sans-serif" }}>Update</th>
+                  <th style={{ fontFamily: "revert", fontSize: "14px", textAlign: "center", color: "#525252", border: "none", fontFamily: "sans-serif" }}>Delete</th>
+                  <th style={{fontFamily:"revert",fontSize:"14px",textAlign:"center", color:"#525252",border:"none", fontFamily:"sans-serif"}}>Aksi</th>
                 </tr>
               </thead>
               <tbody>
                   {getData.map((user,index) => (
-                    <tr key={index} style={{fontFamily:"Poppins", fontSize:"11px", textAlign:"center"}}>
+                    <tr key={index} style={{fontFamily:"Poppins", fontSize:"14px", textAlign:"center"}}>
                       <td style={{ lineHeight: "2" }}>{(page - 1) * 10 + (index + 1)}</td>                      
                       <td style={{ lineHeight: "2" }}>
                         <div style={{display:"flex", textAlign:"left"}}>
