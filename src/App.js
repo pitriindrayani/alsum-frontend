@@ -11,7 +11,6 @@ import { useMediaQuery } from 'react-responsive'
 import Sidebar from "./components/Sidebar/Sidebar";
 import Dashboard from "./pages/Dashboard/Home";
 
-
 // User Management
 import AdminHome from "./pages/Dashboard/Home";
 import AdminMenus from "./pages/ListMenu/Home";
@@ -26,35 +25,6 @@ import AdminUserPermission from "./pages/ListUserPermission/Home";
 import AdminMasterSekolah from "./pages/ListMasterSekolah/Home";
 import AdminMasterJenjang from "./pages/DataSekolah/Home";
 import AdminMasterCabang from "./pages/ListMasterCabang/Home";
-// import AdminMasterJabatan from "./pages/ListMasterJabatan/Home";
-// import AdminMasterStatusGuru from "./pages/ListMasterStatusGuru/Home";
-// import AdminMasterGolongan from "./pages/ListMasterGolongan/Home";
-// import AdminMasterCuti from "./pages/ListMasterCuti/Home";
-// import AdminMasterKalenderLibur from "./pages/ListMasterKalenderLibur/Home";
-// import AdminMasterKalenderGuru from "./pages/ListMasterKalenderGuru/Home";
-// import AdminMasterSchedules from "./pages/ListMasterSchedules/Home";
-// import AdminMasterTeacher from "./pages/ListMasterGuru/Home";
-// import AdminMasterUkk from "./pages/ListMasterUkk/Home";
-// import AdminMasterKinerja from "./pages/ListMasterKinerja/Home";
-
-// Data 
-// import AdminDataAbsensi from "./pages/ListDataAbsesnsi/Home";
-// import AdminDataAbsensiDetail from "./pages/ListDataAbsesnsiDetail/Home";
-// import AdminDataAbsensiDetailHead from "./pages/ListDataAbsesnsiDetailHead/Home";
-
-// import AdminDataListAbsensi from "./pages/ListDataAbsensiAll/Home";
-// import AdminDataListAbsensiHead from "./pages/ListDataAbsensiAllHead/Home";
-
-// import AdminDataAbsenLog from "./pages/ListDataAbsensiLog/Home";
-// import AdminDataKoreksiAbsen from "./pages/ListDataKoreksiAbsen/Home";
-// import AdminWfh from "./pages/ListDataWfh/Home";
-// import AdminWfhFilterHead from "./pages/ListDataWfhFilterHead/Home";
-// import AdminWfhFilterHr from "./pages/ListDataWfhFilterHr/Home";
-
-// import AdminDataKoreksiAbsenFilter from "./pages/ListDataKoreksiAbsenFilter/Home";
-// import AdminDataKoreksiAbsenFilterHead from "./pages/ListDataKoreksiAbsenFilterHead/Home";
-
-// import AdminDataUkk from "./pages/ListMasterUkk/Home";
 
 // Ganti Password
 import AdminChangePassword from "./pages/ListChangePassword/Home";
