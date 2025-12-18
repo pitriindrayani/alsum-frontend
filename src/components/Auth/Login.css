@@ -1,0 +1,10 @@
+.colored-progress-bar-error {
+    --swal2-progress-color: #FF5A5A !important;
+    --swal2-progress-height: 5px;
+  }
+  
+  .colored-progress-bar-success {
+    --swal2-progress-color: #00E554 !important; 
+    --swal2-progress-height: 5px;
+  }
+  

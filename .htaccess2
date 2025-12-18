@@ -1,0 +1,16 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Jika file atau folder yang diminta tidak ada, arahkan ke index.html
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^ index.html [L]
+
+  # Opsional: Aktifkan browser caching untuk file build
+  <IfModule mod_headers.c>
+    <FilesMatch "\.(js|css|html|png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$">
+      Header set Cache-Control "max-age=31536000, public"
+    </FilesMatch>
+  </IfModule>
+</IfModule>
