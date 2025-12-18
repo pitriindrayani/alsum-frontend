@@ -42,7 +42,7 @@ export default function SidebarHome(){
           <MenuItem 
             className='dash-side'
                 onClick={navigateHome}  
-                style={{fontSize:"13px", paddingLeft: "40px", marginTop: "10px", marginBottom: "5px" }}> 
+                style={{fontSize:"14px", paddingLeft: "40px", marginTop: "10px", marginBottom: "5px" }}> 
                 <FontAwesomeIcon icon={faHouse}/> 
                 <span style={{paddingLeft: "9px", }}>
                 Dashboard  </span>
@@ -89,7 +89,7 @@ export default function SidebarHome(){
           <MenuItem 
             className='dash-side'
                 onClick={navigateHome}  
-                style={{fontSize:"13px", paddingLeft: "40px", marginTop: "10px", marginBottom: "5px" }}> 
+                style={{fontSize:"14px", paddingLeft: "40px", marginTop: "10px", marginBottom: "5px" }}> 
                 <FontAwesomeIcon icon={faHouse}/> 
                 <span style={{paddingLeft: "9px", }}>
                 Dashboard  </span>
@@ -103,7 +103,7 @@ export default function SidebarHome(){
             ) : (
               <SubMenu className='menu-module' 
               label={item.name}  
-              style={{paddingLeft:"20px", height:"5vh"}} 
+              style={{paddingLeft:"20px", height:"5vh", borderBottom:"1px solid #4cd6ebff"}} 
               icon={<i className={item.icon_name} style={{marginRight:"-20px"}}/>}>
 
                 {item.menus.map((itemss) => (
@@ -111,7 +111,7 @@ export default function SidebarHome(){
                     className="menu-item "  
                     component={<Link to={{ pathname: `${itemss.url}`}}/>}
                     active={window.location.pathname === `${itemss.url}`}
-                    style={{height:"4vh", fontSize:"13px", paddingLeft: "62px", backgroundColor:'#0abcd7ff'}}>
+                    style={{height:"4vh", fontSize:"14px", paddingLeft: "62px", backgroundColor:'#0abcd7ff'}}>
                     <img src={Arrow} className='icon-arrow' style={{marginRight:"6px"}} /> {itemss.name}
                   </MenuItem> 
                 ))}

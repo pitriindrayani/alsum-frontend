@@ -8,18 +8,19 @@ import "bulma/css/bulma.css";
 import "../../index.css"
 import Swal from "sweetalert2";
 import swal from "sweetalert";
+// Modal Role
 import ModalAdd from "./ModalAdmin/ModalAdd"
 import ModalUpdate from "./ModalAdmin/ModalUpdate"
 import LoaderHome from "../Loader/LoaderHome"
 import { useLocation, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
-import { faCodeBranch } from '@fortawesome/free-solid-svg-icons';
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faUsers } from '@fortawesome/free-solid-svg-icons';
 
-export default function Cabang() {
-  document.title = "List Cabang";
+export default function Sekolah() {
+  document.title = "Sekolah";
   const [getData, setGetData] = useState([]);
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(10);
@@ -36,10 +37,8 @@ export default function Cabang() {
 
   // modal update
   const [id, setId] = useState();
-  const [branchCodeUpdate, setBranchCodeUpdate] = useState();
-  const [branchNameUpdate, setBranchNameUpdate] = useState();
-  const [parentIdUpdate, setParentIdUpdate] = useState();  
-
+  const [dataUpdate, setDataUpdate] = useState();
+  
   // modal add
   const [modalAdd, setModalAdd] = useState(false);
   const [modalUpdate, setModalUpdate] = useState(false);
@@ -87,7 +86,7 @@ export default function Cabang() {
     try {
       // e.preventDefault();
       setLoading(true)
-      const response = await API.get(`/api/branches?page=${page}&limit=${limit}&ascending=${ascending}&search=${keyword}`,fetchParams)
+      const response = await API.get(`/api/schools?page=${page}&limit=${limit}&ascending=${ascending}&search=${keyword}`,fetchParams)
 
       // Checking process
       if (response?.status === 200) {
@@ -143,7 +142,7 @@ export default function Cabang() {
       confirmButtonText: 'Ya, Hapus'
     }).then( async (result) => {
       if(result.isConfirmed) {
-        const response =  await API.delete(`/api/branches/${id}`,fetchParams);
+        const response =  await API.delete(`/api/schools/${id}`,fetchParams);
         if (response.data.error == false) {
           GetResponseData()
           swal({
@@ -173,47 +172,44 @@ export default function Cabang() {
     setModalAdd(true)
   }
 
-  const viewModalUpdate = (id, branch_code, branch_name, parent_id) => {
+  const viewModalUpdate = (id, school) => {
     setModalUpdate(true)
     setId(id)
-    setBranchCodeUpdate(branch_code)
-    setBranchNameUpdate(branch_name)
-    setParentIdUpdate(parent_id)
+    setDataUpdate(school)
   }
 
   return (
     <div className="body" >
 
       {modalAdd  && <ModalAdd GetResponseData={GetResponseData} show={modalAdd} onHide={() => setModalAdd(false)} />}
-      {modalUpdate && <ModalUpdate GetResponseData={GetResponseData} branchCodeUpdate={branchCodeUpdate} branchNameUpdate={branchNameUpdate} 
-      parentIdUpdate={parentIdUpdate} id={id} show={modalUpdate} onHide={() => setModalUpdate(false)} />}
-
+      {modalUpdate && <ModalUpdate GetResponseData={GetResponseData} id={id} dataUpdate={dataUpdate} show={modalUpdate} onHide={() => setModalUpdate(false)} />}
+      
       <div className="body-header d-flex">
         {isTabletOrMobile ? 
           <>
             <div className="title-page">
-              <h6> <FontAwesomeIcon icon={faCodeBranch} /> Data Cabang</h6>
+              <h6> <FontAwesomeIcon icon={faUsers} /> Data Sekolah</h6>
             </div> 
-            
+                
             <div className="ml-auto">
-              <button onClick={viewModalAdd} className="btn btn-create"> <FontAwesomeIcon icon={faPlus} />Cabang</button>
+                  <button onClick={viewModalAdd} className="btn btn-create"> <FontAwesomeIcon icon={faPlus} />User</button>
             </div>
           </>
-            : 
+          : 
           <>
             <div className="title-page">
-              <h5> <FontAwesomeIcon icon={faCodeBranch} />Data Cabang </h5>
+              <h5> <FontAwesomeIcon icon={faUsers} /> Data Sekolah </h5>
             </div>
-      
+          
             <div className="ml-auto">
-              <button onClick={viewModalAdd} className="btn btn-create"> <FontAwesomeIcon icon={faPlus} /> Tambah Cabang</button>
+              <button onClick={viewModalAdd} className="btn btn-create"> <FontAwesomeIcon icon={faPlus} /> Tambah Sekolah</button>
             </div>
           </>
-        }
+        } 
       </div> 
 
       {loading && <LoaderHome />}
-
+      
       <div className="body-content">
 
         {/* LINE SHOW AND SEARCH */}
@@ -260,65 +256,68 @@ export default function Cabang() {
             </div>
           </div> 
         }
-        
+
         {/* TABLE */}
-          <Col xl='12' sm='12'> 
-            <div className="mt-3">
-              <div className="body-table" >
-                <div >
-                  <table className="table dt-responsive nowrap w-100" id="basic-datatable">
-                    <thead>
-                      <tr>
-                        <th>No </th>
-                        <th>Kode Cabang</th>
-                        <th>Nama Cabang</th>
-                        <th>Aksi</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                        {getData.map((cabang,index) => (
-                          <tr key={index}>
-                            <td style={{ lineHeight: "2" }}> {(page - 1) * 10 + (index + 1)} </td>  
-                            <td style={{ lineHeight: "2" }}> {cabang.branch_code} </td>
-                            <td style={{ lineHeight: "2" }}> {cabang.branch_name} </td>
-                            <td>
-                              <button className="button-edit button-table" onClick={() => viewModalUpdate(cabang?.id, cabang?.branch_code, cabang?.branch_name, cabang?.parent_id)} > <FontAwesomeIcon icon={faPenToSquare} /> </button>
-                              <button className="ml-2 button-delete button-table" onClick={() => {deleteById(cabang?.id)}}> <FontAwesomeIcon icon={faTrash} /> </button>
-                            </td>
-                          </tr>
-                        ))}
-                    </tbody>
-                  </table>
-                </div>
+        <Col xl='12' sm='12'> 
+          <div className="mt-3">
+            <div className="body-table" >
+              <div >
+                <table className="table dt-responsive nowrap w-100" id="basic-datatable">
+                  <thead>
+                    <tr>
+                      <th>No</th>
+                      <th>Nama Sekolah</th>
+                      <th>Cabang</th>
+                      <th>Alamat</th>
+                      <th>Aksi</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                      {getData.map((school,index) => (
+                        <tr key={index}>
+                          <td style={{ lineHeight: "2" }}>{(page - 1) * 10 + (index + 1)} </td>
+                          <td style={{ lineHeight: "2" }}> {school.school_name} </td>
+                          <td style={{ lineHeight: "2" }}> {school.ysb_branch_name} </td> 
+                          <td style={{ lineHeight: "2" }}> {school.address} </td> 
+                          <td >
+                            <button className="button-edit button-table" onClick={() => viewModalUpdate(school?.id, school
+                            )}> <FontAwesomeIcon icon={faPenToSquare} /> </button>
+                            <button className="ml-2 button-delete button-table" onClick={() => {deleteById(school?.id)}}> <FontAwesomeIcon icon={faTrash} /></button>                           
+                          </td>
+                        </tr>
+                      ))}
+                  </tbody>
+                </table>
               </div>
             </div>
+          </div>
 
-            <div style={{ display: "flex", padding:"10px"}}>
-              <div>
-                <div style={{fontSize:"12px"}}> Total Rows: {rows} </div>
-                <div style={{fontSize:"12px"}}> Page: {rows ? page : 0} of {pages} </div>
-                <p className="has-text-centered has-text-danger">{msg}</p>
-              </div> 
-              <div style={{flex:"50%", display:"flex", justifyContent:"end"}}>
-                  <nav style={{fontSize:"12px"}} className="pagination is-centered" key={rows}role="navigation" aria-label="pagination">
-                    <ReactPaginate
-                      previousLabel={"<"}
-                      nextLabel={">"}
-                      pageCount={Math.min(10, pages)}
-                      onPageChange={changePage}
-                      containerClassName={"pagination-list"}
-                      pageLinkClassName={"pagination-link"}
-                      previousLinkClassName={"pagination-previous"}
-                      nextLinkClassName={"pagination-next"}
-                      activeLinkClassName={"pagination-link is-current"}
-                      disabledLinkClassName={"pagination-link is-disabled"}
-                    />
-                  </nav>
-              </div>
+          <div style={{ display: "flex", padding:"10px"}}>
+            <div>
+              <div style={{fontSize:"12px"}}> Total Rows: {rows} </div>
+              <div style={{fontSize:"12px"}}> Page: {rows ? page : 0} of {pages} </div>
+              <p className="has-text-centered has-text-danger">{msg}</p>
             </div> 
-          </Col>
-        </div>
+            <div style={{flex:"50%", display:"flex", justifyContent:"end"}}>
+                <nav style={{fontSize:"12px"}} className="pagination is-centered" key={rows}role="navigation" aria-label="pagination">
+                  <ReactPaginate
+                    previousLabel={"<"}
+                    nextLabel={">"}
+                    pageCount={Math.min(10, pages)}
+                    onPageChange={changePage}
+                    containerClassName={"pagination-list"}
+                    pageLinkClassName={"pagination-link"}
+                    previousLinkClassName={"pagination-previous"}
+                    nextLinkClassName={"pagination-next"}
+                    activeLinkClassName={"pagination-link is-current"}
+                    disabledLinkClassName={"pagination-link is-disabled"}
+                  />
+                </nav>
+            </div>
+          </div> 
+        </Col>
       </div>
+    </div>
   );
 
 

@@ -1,4 +1,4 @@
-import AdminHome from "../../components/ListMasterJenjang/Home";
+import AdminHome from "../../components/DataSekolah/Home";
 
 export default function Home() {
   return (

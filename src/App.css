@@ -335,19 +335,6 @@
     font-size: 13px;
 }
 
-/* Sidebar */
-/* .sidebar {
-    height: 100%;
-    width: 160px;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #111;
-    overflow-x: hidden;
-    padding-top: 20px;
-} */
-
 /* //hover over menuitems color */
 .ps-menu-button{
     padding-top: 0 !important;
@@ -364,7 +351,6 @@ color: #ffffff  !important;
    
 }
 
-
 .sidebar .logo-dashboard {
     width: 200px;
     padding-top: 12px;   
@@ -374,9 +360,6 @@ color: #ffffff  !important;
 .sidebar .logo-dashboard img {
     border-radius: 10px;
 }
-
-
-
 
 .sidebar .dash-side {
     /* margin-top: 0px; */
@@ -402,12 +385,12 @@ color: #ffffff  !important;
 }
 
 .sidebar .menu-module {
-    font-size: 13px;
+    font-size: 14px;
 }
 
 
 .sidebar .menu-module .icon-arrow {
-    width: 12px;
+    width: 13px;
 }
 
 /* Container Body */

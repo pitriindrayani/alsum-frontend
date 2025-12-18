@@ -208,7 +208,7 @@ export default function Login() {
           :
         <div style={{ paddingLeft: "0px", width: "100%", borderBottom: "5px solid #EEEEEE", display: "flex", padding: "10px 20px 10px 0px",backgroundColor:"#2e649d", borderRadius:"5px" }}>
           <div style={{flex:"50%",fontSize:"16px",display:"flex", alignItems:"center", paddingLeft:"10px", color:"white"}}>
-            <FaListAlt style={{marginRight:"5px"}}/>List Jenjang
+            <FaListAlt style={{marginRight:"5px"}}/>List Jenjang 
           </div>
           <div style={{ flex: "50%", display: "flex", justifyContent:"end" }}>
             <div className="mr-2" style={{display:"flex",alignItems:"center",marginRight:"5px",backgroundColor:"white",color:"black", borderRadius:"3px", cursor:"pointer", fontSize:"12px"}}>

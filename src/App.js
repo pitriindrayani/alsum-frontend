@@ -24,7 +24,7 @@ import AdminUserPermission from "./pages/ListUserPermission/Home";
 
 // Master Data
 import AdminMasterSekolah from "./pages/ListMasterSekolah/Home";
-import AdminMasterJenjang from "./pages/ListMasterJenjang/Home";
+import AdminMasterJenjang from "./pages/DataSekolah/Home";
 import AdminMasterCabang from "./pages/ListMasterCabang/Home";
 // import AdminMasterJabatan from "./pages/ListMasterJabatan/Home";
 // import AdminMasterStatusGuru from "./pages/ListMasterStatusGuru/Home";

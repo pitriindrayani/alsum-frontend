@@ -1,16 +1,18 @@
 import { useEffect, useRef, useState } from "react";
-import { Form, Button } from 'reactstrap'
+import { Form, Button } from 'reactstrap';
 import { API } from "../../../config/api";
-import { FaTimes } from 'react-icons/fa'
+import { FaTimes } from 'react-icons/fa';
 import Modal from 'react-bootstrap/Modal';
 import { useMutation } from "react-query";
 import "bulma/css/bulma.css";
 import swal from "sweetalert";
-import LoaderAction from "../../Loader/LoaderAction"
-import "../../../index.css"
-import ToastSuccess from "../../NotificationToast/ToastSuccess"
+import LoaderAction from "../../Loader/LoaderAction";
+import "../../../index.css";
+import ToastSuccess from "../../NotificationToast/ToastSuccess";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
-export default function ModalRoleAdd(props) {
+export default function ModalCabangAdd(props) {
   const token = localStorage.getItem("token");
   // Untuk Close Proops Data
   const [propsData, setProopsData] = useState()
@@ -25,15 +27,6 @@ export default function ModalRoleAdd(props) {
   let fetchParams = {
     headers : {"Authorization" : `${token}`,"Content-Type" : "application/json"}
   };
-
-  const GetResponseData = async () => {
-    const response = await API.get(`/api/branches?page=${page}&limit=${limit}&ascending=${ascending}&search=${keyword}`,fetchParams)
-    setGetData(response.data.data)
-  }
-
-  useEffect(() => {
-    GetResponseData()
-  }, [])
 
   const [form, setForm] = useState({
     branch_code: "",
@@ -86,62 +79,44 @@ export default function ModalRoleAdd(props) {
   });
 
   return (
-  <div>
+  <div className="modal">
     {loading && <LoaderAction/>}
-    <Modal {...props} size="lg" aria-labelledby="contained-modal-title-vcenter" centered style={{ fontFamily: "sans-serif", border: "none" }}>  
-      <div style={{width: "100%",display:"flex",padding:"10px 0px", backgroundColor:""}}>
-        <div style={{flex:"92%", fontSize:"20px",display:"flex",alignItems:"center", paddingLeft:"10px", color:"#2e649d", fontWeight:"600"}}>
-          Tambah Cabang
-        </div> 
-        <div style={{flex:"8%",fontSize:"20px",display:"flex",alignItems:"center",justifyContent:"center", color:"#2e649d"}}>
-          <FaTimes onClick={() => setProopsData(props.onHide)} style={{cursor:"pointer"}}/>
-        </div> 
-      </div>
-      <Modal.Body style={{ backgroundColor: "", borderBottomLeftRadius: "5px", borderBottomRightRadius: "5px",border:"none",backgroundImage:"transparent" }}>
-      <Form onSubmit={(e) => handleSubmit.mutate(e)} className="mt-3" >
-          <div className="" style={{ display: "flex"}}>
-            <div style={{ display:"flex", width:"100%"}}>
-              <select ref={nameInputRef} aria-label="Default select example"  onChange={handleChange}  name="parent_id" style={{color:"#2e649d", textAlign:"", 
-                cursor:"pointer", border:"2px solid #2e649d",width:"100%", height:"45px", borderRadius:"5px"}}>
-                <option value="" hidden>ID Parent ..</option>
-                {getData.map((user,index) => (
-                  <option value={user?.id} style={{textAlign:""}}>{user?.branch_name}</option>
-                ))}         
-              </select>
-            </div>
-          </div>
+    <Modal {...props} size="md" aria-labelledby="contained-modal-title-vcenter" centered >  
 
-          <div className="mt-4" style={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'space-between', 
-              backgroundColor: 'transparent', border: '2px solid #2e649d', padding: '5px', borderRadius: '5px',
-              cursor: 'pointer', height:"42px", width:""}}>
-            <label style={{ position: 'absolute', top: '-12px', left: '10px', backgroundColor: '#fff', color: '#2e649d', 
-              padding: '0 5px', fontSize: '15px' }}>
+      <div className="d-flex header-modal">
+        <h5>Tambah Cabang</h5>
+
+        <div className="ml-auto x-close">
+          <FontAwesomeIcon icon={faXmark} onClick={() => setProopsData(props.onHide)} />
+        </div>
+      </div>
+      <hr/>
+
+      <Modal.Body className="modal-body">
+      <Form onSubmit={(e) => handleSubmit.mutate(e)}  >
+          <div className="mt-4 label-group-form" >
+            <label className="label-name-form">
               Kode Cabang
             </label>
-            <input autoFocus type='text' name="branch_code" onChange={handleChange} value={branch_code}  
-              placeholder='....' style={{ backgroundColor: 'transparent', border: 'none', 
-              outline: 'none', color: '#818181', padding: '5px 5px 5px 10px', flex: 1, fontSize: '14px',width:"300px" }}/>
+            <input className="label-input-form" autoFocus type='text' name="branch_code" onChange={handleChange} value={branch_code}  
+              placeholder='Masukan Kode Cabang'/>
             <style>{`input::placeholder { color: #B9B9B9;}`}
             </style>
           </div>
 
-          <div className="mt-4" style={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'space-between', 
-              backgroundColor: 'transparent', border: '2px solid #2e649d', padding: '5px', borderRadius: '5px',
-              cursor: 'pointer', height:"42px", width:""}}>
-            <label style={{ position: 'absolute', top: '-12px', left: '10px', backgroundColor: '#fff', color: '#2e649d', 
-              padding: '0 5px', fontSize: '15px' }}>
+          <div className="mt-4 label-group-form" >
+            <label className="label-name-form">
               Nama Cabang
             </label>
-            <input type='text' name="branch_name" onChange={handleChange} value={branch_name}  
-              placeholder='....' style={{ backgroundColor: 'transparent', border: 'none', 
-              outline: 'none', color: '#818181', padding: '5px 5px 5px 10px', flex: 1, fontSize: '14px',width:"300px" }}/>
+            <input  className="label-input-form" type='text' name="branch_name" onChange={handleChange} value={branch_name}  
+              placeholder='Masukan Nama Cabang' />
             <style>{`input::placeholder { color: #B9B9B9;}`}
             </style>
           </div>
 
-          <div style={{ padding: "0px 0px", marginTop: "0px", display:"flex", justifyContent:"end" }}>
-            <div>
-              <Button className="mt-3" type='submit' color='primary' block style={{ padding: "8px 10px", fontSize: "12px", borderRadius: "5px"}}>
+          <div className="d-flex">
+            <div className="ml-auto">
+              <Button className="mt-4 btn-modal-create" type='submit'>
                 Tambahkan
               </Button>
             </div>
@@ -149,16 +124,8 @@ export default function ModalRoleAdd(props) {
         </Form>
         
       </Modal.Body>
-      {/* <Modal.Footer>
-        <div style={{ display: "flex" }}>
-          <Button onClick={props.onHide} style={{marginRight:"8px"}}>Close</Button>
-        </div>
-      </Modal.Footer> */}
-   
-      
     </Modal>
-    </div>
-   
-    );
+    </div> 
+  );
 }
   
