@@ -1,10 +1,16 @@
-import React from 'react'
-import { Sidebar, Menu, MenuItem,SubMenu } from 'react-pro-sidebar';
+import {React, useState} from 'react'
 import {FaDotCircle} from "react-icons/fa";
-import {  useNavigate } from "react-router-dom";
 import "./Sidebar.css"
 import { setAuthToken } from '../../config/api';
-import Caro1 from "../../assets/ysb/logo_alsum_saja.png"
+import { Sidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
+import {  useNavigate, Link, useLocation } from "react-router-dom";
+import "./Sidebar.css"
+import Logo from "../../assets/logo.png";
+import Arrow from "../../assets/arrow.png";
+import App from "../../assets/app.png"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHouse } from '@fortawesome/free-regular-svg-icons'
+import { useMediaQuery } from 'react-responsive'
 
 
 if (localStorage.token) {
@@ -20,46 +26,49 @@ export default function SidebarHome(){
     navigate("/dashboard");
   };
 
-  
+  // Responsive to mobile or dekstop
+    const isTabletOrMobile = useMediaQuery({ query: '(max-width: 780px)'})
 
   return (
-  <Sidebar backgroundColor="white" className='sidebar' style={{width:"100%",height:"100%",position:"",border:"none", background: "#0B5580"}}>
-    <Menu style={{ marginTop: "" }}>
-      <div style={{display:"flex", justifyContent:"", backgroundColor:"white", paddingLeft:"30px"}}>
-        <div style={{display:"flex"}}>
-          <div className='mr-4' style={{padding:"10px 0px"}}>
-            <img src={Caro1} onClick={navigateHome} className="rounded-pill" style={{width:"80px", height:"70px", cursor:"pointer"}} />
-          </div>
-          <div style={{color:"#00487F", display:"flex", justifyContent:"center", alignItems:"center"}}>
-            <div>
-              <div style={{display:"flex", alignItems:"center", fontSize:"20px", fontWeight:"bold"}}>
-                Al Azhar Summarecon
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-  
-      <div style={{display:"flex", justifyContent:"start", padding:"10px 0px", fontFamily:"Poppins", fontWeight:"bold", borderBottom:"2px solid white"}}>
-        <div style={{marginLeft:"20px", color:"#00487F"}}>
-          General
-        </div>
-      </div>
-      
-      {storageItems.map((item, index) => (
+  <Sidebar backgroundColor='#0abcd7ff'  className='sidebar' style={{width:"100%",height:"100%",position:"",border:"none", color:"#ffffffff" }}>
+
+     <Menu 
+    >
+     
+    {isTabletOrMobile ? 
+    // SIDEBAR MOBILE
+        <>
+          
+          <MenuItem 
+            className='dash-side'
+                onClick={navigateHome}  
+                style={{fontSize:"13px", paddingLeft: "40px", marginTop: "10px", marginBottom: "5px" }}> 
+                <FontAwesomeIcon icon={faHouse}/> 
+                <span style={{paddingLeft: "9px", }}>
+                Dashboard  </span>
+          </MenuItem>
+        
+          {storageItems.map((item, index) => (
         (item.url === "" || item.url == null) ? (
           (item.name === "User Previlege" && levelUser !== "developer") ? (
             <></>
           ) : (
-            <SubMenu className='mt-2 submenu-label' key={index} style={{fontFamily:"Poppins", paddingLeft:"", display:"flex", alignItems:"center", height:"5vh", fontWeight:"", color:"#575757", fontSize:"14px"}} label={item.name}  
-              icon={<i className={item.icon_name} style={{display:"flex", height:"100%", alignItems:"center", paddingLeft:"10px", marginLeft:"10px", color: item?.color_icon, fontSize:"20px"}}/>}>
-              {item.menus.map((itemss) => (
-                <MenuItem className="menu-item"  href={itemss.url} style={{height:"5vh", fontSize:"12px", fontWeight:"", fontFamily: "sans-serif", paddingLeft: "55px", backgroundColor:""}}>
-                  <FaDotCircle style={{ marginRight: "10px", marginBottom: "3px", fontSize: "10px", color: "#666666"}} />
-                  {itemss.name}
-                </MenuItem>
-              ))}
-            </SubMenu>
+            <SubMenu className='menu-module' 
+              label={item.name}  
+              style={{paddingLeft:"20px", height:"5vh"}} 
+              icon={<i className={item.icon_name} style={{marginRight:"-20px"}}/>}>
+
+                {item.menus.map((itemss) => (
+                  <MenuItem  
+                    className="menu-item "  
+                    component={<Link to={{ pathname: `${itemss.url}`}}/>}
+                    active={window.location.pathname === `${itemss.url}`}
+                    style={{height:"4vh", fontSize:"13px", paddingLeft: "62px", backgroundColor:'#0abcd7ff'}}>
+                    <img src={Arrow} className='icon-arrow' style={{marginRight:"6px"}} /> {itemss.name}
+                  </MenuItem> 
+                ))}
+                
+              </SubMenu>
           )
         ) : (
           <MenuItem className="menu-item" href={item.url} style={{fontFamily: "sans-serif", marginLeft: "0px"}} icon={<i className={item.icon_name} style={{marginLeft: "15px", color:"#666666", fontSize: "20px"}} />}>
@@ -67,6 +76,57 @@ export default function SidebarHome(){
           </MenuItem>
         )
       ))}
+                              
+                                          
+        </>
+        : 
+        <>
+        {/* SIDEBAR DESKTOP */}
+          <div className='logo-dashboard' style={{paddingBottom:"15px",  borderBottom: "1px solid #ffffffff" }}>
+            <img src={Logo} onClick={navigateHome}  />
+          </div>
+          
+          <MenuItem 
+            className='dash-side'
+                onClick={navigateHome}  
+                style={{fontSize:"13px", paddingLeft: "40px", marginTop: "10px", marginBottom: "5px" }}> 
+                <FontAwesomeIcon icon={faHouse}/> 
+                <span style={{paddingLeft: "9px", }}>
+                Dashboard  </span>
+          </MenuItem>
+         
+          
+        {storageItems.map((item, index) => (
+          (item.url === "" || item.url == null) ? (
+            (item.name === "User Previlege" && levelUser !== "developer") ? (
+              <></>
+            ) : (
+              <SubMenu className='menu-module' 
+              label={item.name}  
+              style={{paddingLeft:"20px", height:"5vh"}} 
+              icon={<i className={item.icon_name} style={{marginRight:"-20px"}}/>}>
+
+                {item.menus.map((itemss) => (
+                  <MenuItem  
+                    className="menu-item "  
+                    component={<Link to={{ pathname: `${itemss.url}`}}/>}
+                    active={window.location.pathname === `${itemss.url}`}
+                    style={{height:"4vh", fontSize:"13px", paddingLeft: "62px", backgroundColor:'#0abcd7ff'}}>
+                    <img src={Arrow} className='icon-arrow' style={{marginRight:"6px"}} /> {itemss.name}
+                  </MenuItem> 
+                ))}
+                
+              </SubMenu>
+            )
+          ) : (
+            <MenuItem className="menu-item" href={item.url} style={{fontFamily: "sans-serif", marginLeft: "0px"}} icon={<i className={item.icon_name} style={{marginLeft: "15px", color:"#666666", fontSize: "20px"}} />}>
+              {item.name}
+            </MenuItem>
+          )
+      ))}
+                                    
+        </>
+    }
     </Menu>
   </Sidebar>
   )

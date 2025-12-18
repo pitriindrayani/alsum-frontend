@@ -354,7 +354,7 @@
 }
 
 .ps-menu-button:hover {
-background-color:#627ec7  !important;
+background-color:rgb(58, 219, 233)  !important;
 color: #ffffff  !important;
 }
 
@@ -372,7 +372,6 @@ color: #ffffff  !important;
 }
 
 .sidebar .logo-dashboard img {
-    border: 1px solid #4368c5;
     border-radius: 10px;
 }
 
@@ -435,19 +434,20 @@ color: #ffffff  !important;
 }
 
 .body .body-header .title-page{
-    color: #4747AC;
+    color: rgb(0, 96, 111);
     padding-top: 5px;
 }
 
 .body .body-header .btn-create {
-    background-color: #4368c5;
+    background-color: #0abcd7ff;
     color: #fff;
     font-size: 13px;
+    font-weight: 600;
     cursor: pointer;
 }
 
 .body .body-header .btn-create:hover {
-    background-color: #5d7fd6;
+    background-color: #FECB22;
     color: #fff;
 }
 
@@ -547,11 +547,11 @@ color: #ffffff  !important;
 .body .body-table thead tr {
     border-bottom: 1px solid #35385a;
     font-size: 14px;
-    color: #4747AC !important;
+    color: rgb(0, 96, 111);
 }
 
 .body .body-table thead tr th {
-    color: #4747AC ;
+    color: rgb(0, 96, 111);
 }
 
 
@@ -634,7 +634,7 @@ color: #ffffff  !important;
     border-radius: 5px;
     cursor: pointer;
     padding-left: 10px;
-    border: 1px solid #4747AC;
+    border: 1px solid #0abcd7ff;
     font-size: 15px;
 }
 
@@ -658,7 +658,7 @@ color: #ffffff  !important;
     align-items: center;
     justify-content: space-between;
     background-color: transparent;
-    border: 1px solid #4747AC;
+    border: 1px solid #0abcd7ff;
     padding: 5px;
     border-radius: 5px;
     cursor: pointer;
@@ -670,7 +670,7 @@ color: #ffffff  !important;
     top: -12px;
     left: 10px;
     background-color: #fff;
-    color: #4747AC;
+    color: #0abcd7ff;
     padding: 0 5px;
     font-size: 14px;
 }
@@ -681,7 +681,7 @@ color: #ffffff  !important;
     align-items: center;
     justify-content: space-between;
     background-color: transparent;
-    border: 1px solid #4747AC;
+    border: 1px solid #0abcd7ff;
     padding: 5px;
     border-radius: 5px;
     cursor: pointer;
@@ -693,7 +693,7 @@ color: #ffffff  !important;
     top: -12px;
     left: 10px;
     background-color: #fff;
-    color: #4747AC;
+    color: #0abcd7ff;
     padding: 0 5px;
     font-size: 14px;
 }
@@ -711,7 +711,8 @@ color: #ffffff  !important;
 }
 
 .modal .btn-modal-create {
-    background-color: #4747AC;
+    background-color: #0abcd7ff;
+    border: none;
     color: #fff;
     border-radius: 5px;
     font-size: 13px;
@@ -719,7 +720,7 @@ color: #ffffff  !important;
 }
 
 .modal .btn-modal-create:hover {
-    background-color: #4368c5;
+    background-color: #e9b200;
 }
 
 .modal .hasil-scan {

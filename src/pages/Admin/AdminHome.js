@@ -12,7 +12,7 @@ import NavbarDekstop from "../../components/Navbar/NavbarAdmin/NavbarDekstop"
 //   setAuthToken(localStorage.token);
 // }
 
-export default function Home() {\
+export default function Home() {
   const isTabletOrMobile = useMediaQuery({ query: '(max-width: 780px)'})
  
   return (

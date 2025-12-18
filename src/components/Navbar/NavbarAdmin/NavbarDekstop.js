@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { Row, Col, Dropdown } from 'react-bootstrap';
 import { useNavigate } from 'react-router';
 import { FaSignOutAlt } from "react-icons/fa";
-import patrol_user from "../../../assets/ysb/logo_user.png";
-import Logo_Dashboard from '../../../assets/ysb/logo_alsum.png'
+import logo_user from "../../../assets/profile.png";
 
 function OffcanvasExample({ sidebarStatus, setSidebarStatus }) {
   let navigate = useNavigate();
@@ -23,37 +22,63 @@ function OffcanvasExample({ sidebarStatus, setSidebarStatus }) {
   };
 
   return (
-    <div style={{  padding: "0px 0px 0px 0px" }}>
-      <Row className='match-height' style={{ backgroundColor: "#3272B3" }}>
-        <Col xl='12' sm='12' style={{ backgroundColor: "#3272B3"}}>
-          <div style={{ display: "flex" }}>
-            {/* <div style={{ flex: "50%", display: "flex" }}>
-              <div onClick={toggleSidebar} style={{ backgroundColor: "#3272B3", display: "flex", alignItems: "center", padding: "0px 5px 0px 15px", color:"white" }}>
-                <img  style={{ width:"40px", height:"40px"}} src={Logo_Dashboard} alt='Login Cover' />
-              </div>
-              <div onClick={toggleSidebar} style={{ backgroundColor: "#3272B3", display: "flex", alignItems: "center", padding: "0px 20px 0px 0px", color:"white" }}>
-                Sekolah Islam Al Azhar Summarecon
-              </div>
-            </div> */}
-            <div style={{ flex: "50%", display: "flex", justifyContent: "end" }}>
-              <Dropdown style={{ backgroundColor: "#3272B3" }}>
-                <Dropdown.Toggle variant="white" style={{ color: "white", fontFamily:"Poppins", fontSize:"15px", fontWeight:"" }}>
-                  <img src={patrol_user} width={40} className="rounded-pill" style={{ minHeight: "40px", maxHeight: "40px", marginRight: "3px" }} />
-                  {username}
-                </Dropdown.Toggle>
-                <Dropdown.Menu variant="light" style={{ alignItem: "left", marginTop: "7px"}}>
-                  <Dropdown.Item onClick={logout} style={{backgroundColor:"white"}}>
-                    <FaSignOutAlt className="me-2" style={{color:"#3272B3"}}/>
-                    <span style={{color:"#3272B3"}}>Logout</span>
-                  </Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
-            </div>
+    <div className='header' style={{ margin: "0px 5px 0px 5px" }}>
+      <Row className='match-height' style={{ padding:"8px 15px" }}>
+        <Col xl='12' sm='12' style={{ backgroundColor: "#0abcd7ff", borderRadius:"5px"}}>
+          <div className='d-sm-flex justify-content-between'>
+           
+
+            <Dropdown className='ml-auto'>
+              <Dropdown.Toggle style={{ backgroundColor:"#0abcd7ff",border:"none", borderRadius: "12px",
+                  padding: "5px 5px",display: "flex",alignItems: "center",minHeight: "20px"}}>
+                <div style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  gap: "5px"
+                }}>
+                  <div style={{position: "relative"}}>
+                    <img 
+                      src={logo_user} 
+                      width={45} 
+                      height={45} 
+                      className="rounded-pill" 
+                      style={{borderRadius: "50%"}}
+                      alt="user"
+                    />
+                    <span style={{
+                      position: "absolute",
+                      bottom: "2px",
+                      right: "2px",
+                      width: "10px",
+                      height: "10px",
+                      background: "limegreen",
+                      borderRadius: "50%",
+                      border: "2px solid white"
+                    }}></span>
+                  </div>
+
+                  <div style={{display: "flex", flexDirection: "column", textAlign: "left", marginLeft: "8px"}}>
+                    <span style={{fontWeight: "600", color: "#fff"}}>{username}</span>
+                    <span style={{fontSize: "13px", color: "#fff"}}>{levelUser}</span>
+                  </div>
+                </div>
+              </Dropdown.Toggle>
+
+              <Dropdown.Menu 
+                variant="light" 
+                style={{ marginTop: "5px", borderRadius:"10px" }}
+              >
+                <Dropdown.Item onClick={logout} style={{backgroundColor:"white"}}>
+                  <FaSignOutAlt className="me-2" style={{color:"#0abcd7ff"}}/>
+                  <span style={{color:"#0abcd7ff"}}>Logout</span>
+                </Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
           </div>
         </Col>
       </Row>
 
-     
     </div>
   );
 }
