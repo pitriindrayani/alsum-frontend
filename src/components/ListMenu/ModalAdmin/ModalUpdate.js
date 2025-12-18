@@ -105,7 +105,7 @@ export default function ModalRoleUpdate(props) {
     <div className="modal">
     {loading && <LoaderAction/>}
 
-    <Modal {...props} size="md" aria-labelledby="contained-modal-title-vcenter" centered >  
+    <Modal {...props} size="md" aria-labelledby="contained-modal-title-vcenter"  backdrop="static" keyboard={false} centered >  
     
             <div className="d-flex header-modal">
                 <h5>Update Menu</h5>
@@ -202,7 +202,7 @@ export default function ModalRoleUpdate(props) {
             <div className="d-flex">
               <div className="ml-auto">
                 <Button className="mt-4 btn-modal-create" type='submit'>
-                  Tambahkan
+                  Perbarui
                 </Button>
               </div>
             </div>

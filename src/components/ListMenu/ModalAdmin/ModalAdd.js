@@ -99,7 +99,7 @@ export default function ModalRoleAdd(props) {
   <div className="modal">
     {loading && <LoaderAction/>}
 
-    <Modal {...props} size="md" aria-labelledby="contained-modal-title-vcenter" centered >  
+    <Modal {...props} size="md" aria-labelledby="contained-modal-title-vcenter" backdrop="static" keyboard={false} centered >  
 
       <div className="d-flex header-modal">
         <h5>Tambah Menu</h5>

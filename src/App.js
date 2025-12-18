@@ -22,17 +22,16 @@ import AdminSubModules from "./pages/ListSubModule/Home";
 import AdminUsers from "./pages/ListUser/Home";
 import AdminUserPermission from "./pages/ListUserPermission/Home";
 
-// // Master Data
-// import AdminMasterSekolah from "./pages/ListMasterSekolah/Home";
-// import AdminMasterJenjang from "./pages/ListMasterJenjang/Home";
-// import AdminMasterCabang from "./pages/ListMasterCabang/Home";
+// Master Data
+import AdminMasterSekolah from "./pages/ListMasterSekolah/Home";
+import AdminMasterJenjang from "./pages/ListMasterJenjang/Home";
+import AdminMasterCabang from "./pages/ListMasterCabang/Home";
 // import AdminMasterJabatan from "./pages/ListMasterJabatan/Home";
 // import AdminMasterStatusGuru from "./pages/ListMasterStatusGuru/Home";
 // import AdminMasterGolongan from "./pages/ListMasterGolongan/Home";
 // import AdminMasterCuti from "./pages/ListMasterCuti/Home";
 // import AdminMasterKalenderLibur from "./pages/ListMasterKalenderLibur/Home";
 // import AdminMasterKalenderGuru from "./pages/ListMasterKalenderGuru/Home";
-// import AdminMasterPeriod from "./pages/ListMasterPeriod/Home";
 // import AdminMasterSchedules from "./pages/ListMasterSchedules/Home";
 // import AdminMasterTeacher from "./pages/ListMasterGuru/Home";
 // import AdminMasterUkk from "./pages/ListMasterUkk/Home";
@@ -136,13 +135,22 @@ function Content() {
 
       {/* Admin User Permission */}
       <Route exact path="/permissions/:id/:firstname/:lastname" element={<AdminUserPermission/>}/>
-
      
       {/* Admin Ganti Password */}
       <Route exact path="/change-password" element={<AdminChangePassword/>}/>
 
       {/* Not Found Page */}
       <Route path="*" element={<My404Component />} />
+
+       {/* Admin Sekolah */}
+      <Route exact path="/educational-stages" element={<AdminMasterSekolah/>}/>
+
+      {/* Admin Jenjang */}
+      <Route exact path="/schools" element={<AdminMasterJenjang/>}/>
+
+      {/* Admin Cabang */}
+      <Route exact path="/branches" element={<AdminMasterCabang/>}/>
+
   </Routes>
   </>
   )
