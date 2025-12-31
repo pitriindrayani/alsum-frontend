@@ -1,4 +1,4 @@
-import AdminHome from "../../components/ListChangePassword/Home";
+import Beranda from "../../components-public/Beranda";
 import { useMediaQuery } from 'react-responsive'
 
 export default function Home() {
@@ -6,7 +6,7 @@ export default function Home() {
   
   return (
     <div >  
-      <AdminHome />
+      <Beranda />
     </div>
   );
 }

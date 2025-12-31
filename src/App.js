@@ -1,17 +1,18 @@
+import "./App.css";
+import { Routes, Route, useNavigate, Navigate } from "react-router-dom";
 
-import './App.css';
-import {  Routes, useNavigate } from "react-router-dom";
-import { useEffect } from 'react';
-import {  Route } from 'react-router-dom';
+// Layout
+import PublicLayout from "./layouts/PublicLayout";
+import AdminLayout from "./layouts/AdminLayout";
+
+// Public Pages
+import Beranda from "./pages-public/Beranda/Home";
+
+// Auth
 import Auth from "./pages/Auth/Auth";
 
-import NavbarMobile from "./components/Navbar/NavbarAdmin/NavbarMobile";
-import NavbarDekstop from "./components/Navbar/NavbarAdmin/NavbarDekstop";
-import { useMediaQuery } from 'react-responsive'
-import Sidebar from "./components/Sidebar/Sidebar";
-import Dashboard from "./pages/Dashboard/Home";
-
-// User Management
+// Admin Pages
+import ProtectedRoute from "./routes/ProtectedRoute";
 import AdminHome from "./pages/Dashboard/Home";
 import AdminMenus from "./pages/ListMenu/Home";
 import AdminRoles from "./pages/ListRole/Home";
@@ -20,139 +21,51 @@ import AdminModules from "./pages/ListModule/Home";
 import AdminSubModules from "./pages/ListSubModule/Home";
 import AdminUsers from "./pages/ListUser/Home";
 import AdminUserPermission from "./pages/ListUserPermission/Home";
-
-// Master Data
 import AdminMasterSekolah from "./pages/ListMasterSekolah/Home";
 import AdminMasterJenjang from "./pages/DataSekolah/Home";
 import AdminMasterCabang from "./pages/ListMasterCabang/Home";
-
-// Ganti Password
 import AdminChangePassword from "./pages/ListChangePassword/Home";
 
-// Not Found Page
+// Not Found
 import My404Component from "./pages/NotFoundPage/PageNotFound";
 
 function App() {
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const checkToken = () => {
-      const token = localStorage.getItem("token");
-      const expiry = localStorage.getItem("token_expiry");
-
-      if (!token || !expiry || new Date().getTime() > expiry) {
-        localStorage.clear();
-        navigate("/"); 
-      }
-    };
-
-    checkToken();
-    const interval = setInterval(() => {
-      checkToken();
-    }, 3600000);
-
-    return () => clearInterval(interval);
-  }, [navigate]);
-
-
-  const pathName = window.location.pathname
-  const arr = pathName.toString().split("/");
-  const currentPath = arr[arr.length-1];
-
-return (
-  <>
-  <div>
-    { currentPath.length > 0 && <Layout />}
-    <div className="main_content">
-      <Routes>
-          <Route path={'/'} element={<Auth />} />
-      </Routes>
-    </div>
-  </div>
-     
-  </>        
- 
-  );
-}
-
-function Content() {
   return (
-  <>
-  <Routes>
-     {/* Auth */}
-      {/* <Route exact path="/" element={<Auth />} /> */}
+    <Routes>
+      {/* ===== PUBLIC ROUTE ===== */}
+      <Route element={<PublicLayout />}>
+        <Route path="/" element={<Beranda />} />
+      </Route>
 
-      {/* Dashboard */}
-      <Route exact path="/dashboard" element={<AdminHome />}/>
+      {/* ===== AUTH (NO LAYOUT) ===== */}
+      <Route path="/1337" element={<Auth />} />
 
-      {/* Admin Menus */}
-      <Route exact path="/privileges/menus" element={<AdminMenus />} />
+      {/* ===== ADMIN ROUTE ===== */}
+      <Route element={<ProtectedRoute />}>
+        <Route element={<AdminLayout />}>
+          <Route path="/dashboard" element={<AdminHome />} />
+          <Route path="/privileges/menus" element={<AdminMenus />} />
+          <Route path="/privileges/roles" element={<AdminRoles />} />
+          <Route path="/privileges/roles/:id/:name" element={<AdminRolePermision />} />
+          <Route path="/privileges/modules" element={<AdminModules />} />
+          <Route path="/privileges/sub-modules/:id/:slug_name" element={<AdminSubModules />} />
+          <Route path="/privileges/users" element={<AdminUsers />} />
+          <Route path="/permissions/:id/:firstname/:lastname" element={<AdminUserPermission />} />
+          <Route path="/change-password" element={<AdminChangePassword />} />
+          <Route path="/educational-stages" element={<AdminMasterSekolah />} />
+          <Route path="/schools" element={<AdminMasterJenjang />} />
+          <Route path="/branches" element={<AdminMasterCabang />} />
+          {/* <Route path="/*" element={<My404Component />} /> */}
+        </Route>
+      </Route>
 
-      {/* Admin Roles */}
-      <Route exact path="/privileges/roles" element={<AdminRoles />} />
-
-      {/* Admin Role Permision */}
-      <Route exact path="/privileges/roles/:id/:name" element={<AdminRolePermision/>}/>
+      {/* ===== GLOBAL NOT FOUND ===== */}
+      <Route path="*" element={<Navigate to="/" replace />} />
       
-      {/* Admin Modules */}
-      <Route exact path="/privileges/modules" element={<AdminModules />} />
-
-      {/* Admin Sub Modules */}
-      <Route exact path="/privileges/sub-modules/:id/:slug_name" element={<AdminSubModules />} />
-
-      {/* Admin User */}
-      <Route exact path="/privileges/users" element={<AdminUsers/>} />
-
-      {/* Admin User Permission */}
-      <Route exact path="/permissions/:id/:firstname/:lastname" element={<AdminUserPermission/>}/>
-     
-      {/* Admin Ganti Password */}
-      <Route exact path="/change-password" element={<AdminChangePassword/>}/>
-
-      {/* Not Found Page */}
-      <Route path="*" element={<My404Component />} />
-
-       {/* Admin Sekolah */}
-      <Route exact path="/educational-stages" element={<AdminMasterSekolah/>}/>
-
-      {/* Admin Jenjang */}
-      <Route exact path="/schools" element={<AdminMasterJenjang/>}/>
-
-      {/* Admin Cabang */}
-      <Route exact path="/branches" element={<AdminMasterCabang/>}/>
-
-  </Routes>
-  </>
-  )
-}
-
-
-function Layout() {
-  const isTabletOrMobile = useMediaQuery({ query: '(max-width: 780px)'});
-  return (
-  <>
-  <div style={{ backgroundColor:"#fafbffff", minHeight:isTabletOrMobile? "100vh" : "", display:isTabletOrMobile? "" : "" }}>
-          {isTabletOrMobile ? (
-          <div style={{display:""}}>
-            <NavbarMobile />         
-            <Content />
-          </div>
-        ) : (
-        <div style={{ minHeight: "100vh", display: "flex" }}>
-              <div style={{ display: "flex", flex: "1" }}>
-                <div style={{ flex: "10%" }}>
-                  <Sidebar />
-                </div>
-                <div style={{ flex: "90%" }}>
-                  <NavbarDekstop />
-                  <Content />
-                </div>
-              </div>
-        </div>
-        )}
-      </div>
-    </>
-  )
+    </Routes>
+  );
 }
 
 export default App;

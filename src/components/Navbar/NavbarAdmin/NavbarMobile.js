@@ -1,5 +1,4 @@
 import React, { useState, useEffect, Fragment } from 'react';
-import { Row, Col } from 'react-bootstrap';
 import {  Dropdown } from "react-bootstrap";
 import { useNavigate } from 'react-router';
 import { setAuthToken } from '../../../config/api';
@@ -32,7 +31,7 @@ const User = ({setViewSidebar}) => {
   const logout = (e)=>{
     e.preventDefault();
     localStorage.clear();
-    navigate("/");
+    navigate("/1337");
   };
   
     const viewSidebar = () => {

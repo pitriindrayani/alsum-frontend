@@ -30,10 +30,8 @@ export default function SidebarHome(){
     const isTabletOrMobile = useMediaQuery({ query: '(max-width: 780px)'})
 
   return (
-  <Sidebar backgroundColor='#0abcd7ff'  className='sidebar' style={{width:"100%",height:"100%",position:"",border:"none", color:"#ffffffff" }}>
-
-     <Menu 
-    >
+  <Sidebar backgroundColor='#098adaff'  className='sidebar' style={{width:"100%",height:"100%",position:"",border:"none", color:"#ffffffff" }}>
+    <Menu>
      
     {isTabletOrMobile ? 
     // SIDEBAR MOBILE
@@ -42,10 +40,10 @@ export default function SidebarHome(){
           <MenuItem 
             className='dash-side'
                 onClick={navigateHome}  
-                style={{fontSize:"14px", paddingLeft: "40px", marginTop: "10px", marginBottom: "5px" }}> 
+                style={{fontSize:"14px", paddingLeft: "40px", marginTop: "10px", marginBottom: "5px",}}> 
                 <FontAwesomeIcon icon={faHouse}/> 
                 <span style={{paddingLeft: "9px", }}>
-                Dashboard  </span>
+                Dashboard </span>
           </MenuItem>
         
           {storageItems.map((item, index) => (
@@ -55,7 +53,7 @@ export default function SidebarHome(){
           ) : (
             <SubMenu className='menu-module' 
               label={item.name}  
-              style={{paddingLeft:"20px", height:"5vh"}} 
+              style={{paddingLeft:"20px", height:"5vh", borderBottom:"1px solid #0d82caff"}} 
               icon={<i className={item.icon_name} style={{marginRight:"-20px"}}/>}>
 
                 {item.menus.map((itemss) => (
@@ -63,7 +61,7 @@ export default function SidebarHome(){
                     className="menu-item "  
                     component={<Link to={{ pathname: `${itemss.url}`}}/>}
                     active={window.location.pathname === `${itemss.url}`}
-                    style={{height:"4vh", fontSize:"13px", paddingLeft: "62px", backgroundColor:'#0abcd7ff'}}>
+                    style={{height:"4vh", fontSize:"13px", paddingLeft: "62px", backgroundColor:'#0b88d6ff'}}>
                     <img src={Arrow} className='icon-arrow' style={{marginRight:"6px"}} /> {itemss.name}
                   </MenuItem> 
                 ))}
@@ -82,14 +80,14 @@ export default function SidebarHome(){
         : 
         <>
         {/* SIDEBAR DESKTOP */}
-          <div className='logo-dashboard' style={{paddingBottom:"15px",  borderBottom: "1px solid #ffffffff" }}>
+          <div className='logo-dashboard' style={{paddingBottom:"15px",  borderBottom: "1px solid #FECB22" }}>
             <img src={Logo} onClick={navigateHome}  />
           </div>
           
           <MenuItem 
             className='dash-side'
                 onClick={navigateHome}  
-                style={{fontSize:"14px", paddingLeft: "40px", marginTop: "10px", marginBottom: "5px" }}> 
+                style={{fontSize:"14px", paddingLeft: "40px", marginTop: "10px", marginBottom: "10px" }}> 
                 <FontAwesomeIcon icon={faHouse}/> 
                 <span style={{paddingLeft: "9px", }}>
                 Dashboard  </span>
@@ -103,7 +101,7 @@ export default function SidebarHome(){
             ) : (
               <SubMenu className='menu-module' 
               label={item.name}  
-              style={{paddingLeft:"20px", height:"5vh", borderBottom:"1px solid #4cd6ebff"}} 
+              style={{paddingLeft:"20px", height:"5vh", borderBottom:"1px solid #0d82caff"}} 
               icon={<i className={item.icon_name} style={{marginRight:"-20px"}}/>}>
 
                 {item.menus.map((itemss) => (
@@ -111,7 +109,7 @@ export default function SidebarHome(){
                     className="menu-item "  
                     component={<Link to={{ pathname: `${itemss.url}`}}/>}
                     active={window.location.pathname === `${itemss.url}`}
-                    style={{height:"4vh", fontSize:"14px", paddingLeft: "62px", backgroundColor:'#0abcd7ff'}}>
+                    style={{height:"4vh", fontSize:"14px", paddingLeft: "62px", backgroundColor:'#0b88d6ff'}}>
                     <img src={Arrow} className='icon-arrow' style={{marginRight:"6px"}} /> {itemss.name}
                   </MenuItem> 
                 ))}

@@ -127,7 +127,7 @@ export default function Login() {
                             </Button>
                             :
                             <Button className=" w-100 button-login-phone" type='submit' color="primary" style={{padding:"8px 0px", 
-                            fontSize:"15px", borderRadius:"50px", backgroundColor:"#4368c5", color:"white"}}>
+                            fontSize:"15px", borderRadius:"50px", backgroundColor:"#FECB22", color:"000"}}>
                               Login
                             </Button>
                             }

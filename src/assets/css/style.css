@@ -1,0 +1,301 @@
+/* NAVBAR */
+
+/* .navbar {
+  transition: all 0.4s;
+  height: auto;
+} */
+
+/* Change navbar styling on scroll */
+/* .navbar.active {
+    background: #0773B6;
+    height: 68px;
+}  */
+
+/* NAVBAR */
+.navbar {
+  transition: all 0.4s;
+  height: auto;
+  background-color: #0773b67e !important; /* ⬅️ PENTING */
+}
+
+/* Saat scroll (kalau kamu pakai class active) */
+.navbar.active {
+  background-color: #0773B6; /* tetap biru */
+  height: 68px;
+}
+
+/* .navbar .testtt  button{
+    font-size: 60px;
+} */
+
+
+
+header {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  background-color: #0773B6;
+  position: fixed;
+  z-index: 60;
+  top: 0;
+  padding-left: 40px;
+  padding-right: 40px;
+  width: 100%;
+}
+
+
+.navbar-brand img{
+  width: 180px;
+}
+
+.navbar .nav-link{
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.navbar-nav .nav-item {
+  margin: 0 10px;
+}
+
+header .navbar-nav .nav-item.active {
+  color: #ffa800;
+}
+
+
+.navbar-nav .nav-item .nav-link:hover {
+  color: #ffa800;
+}
+
+.navbar-nav .btn-group .dropdown-menu a:hover {
+  color: #ffa800;
+  background-color: transparent;
+}
+
+.btn-pmb .btn-warning {
+  background-color: #FFA11D;
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.btn-pmb .btn-warning a{
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.navbar-collapse .navbar-nav .dropdown-menu {
+  background-color: #0773b6b6;
+  margin-top: 15px;
+ 
+}
+
+.navbar-collapse .navbar-nav .dropdown-menu a{
+  color: #ffffff;
+  padding: 6px 25px;
+}
+
+.navbar-collapse .navbar-nav .dropdown-menu a:hover {
+
+  color: #ffa800;
+  font-weight: 600;
+}
+
+.dropdown:hover > .dropdown-menu,
+.dropend:hover > .dropdown-menu {
+  display: block;
+  margin-top: 0.125em;
+  margin-left: 0.125em;
+}
+
+.dropend:hover > .dropdown-menu {
+  position: absolute;
+  top: 0;
+  left: 100%;
+}
+
+
+.fade-enter-active, .fade-leave-active {
+  transition : opacity .5s
+}
+
+.fade-enter, .fade-leave-to /* .fade-leave-active in < 2.1.8 *
+*/{
+ opacity: 0
+}
+
+
+@media (max-width: 1154px) {
+  header {
+    padding-left: 20px;
+    padding-right: 20px;
+  
+  }
+
+  .navbar-brand img{
+    width: 110px;
+  }
+
+  .navbar-nav .nav-item {
+    font-size: 15px;
+    margin: 0 0px;
+  }
+}
+
+@media (max-width: 991px) {
+ 
+  .navbar-brand img{
+    width: 100px;
+  }
+
+  .navbar .navbar-nav {
+    padding-top: 20px;
+    border-top: 1px solid #abfff2;
+    margin-top: 20px;
+  }
+
+  .navbar .navbar-nav .nav-item {
+    padding-bottom: 8px;
+    padding-left: 5px;
+  }
+
+  .navbar .navbar-collapse .btn-header button{
+    display: block;
+  }
+
+  .navbar .navbar-collapse .btn-header .btn-join{
+    margin-left: -13px;
+    margin-bottom: 15px;
+  }
+
+  .navbar .navbar-collapse .btn-header {
+    margin-bottom: 30px;
+  }
+
+  .navbar-collapse{
+  padding: 0 20px;
+  background: #0773b6d0;
+  padding-bottom: 20px;
+}
+
+  
+}
+
+@media screen and (min-width: 769px) {
+  .dropend:hover > .dropdown-menu {
+    position: absolute;
+    top: 0;
+    left: 100%;
+  }
+}
+
+@media (max-width: 532px) {
+  header {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .navbar-brand img{
+    width: 100px;
+  }
+
+  .navbar .navbar-toggler-icon {
+    font-size: 15px;
+  }
+
+  .navbar .navbar-nav .nav-item {
+    padding-bottom: 5px;
+  }
+}
+
+
+/* Jumbotron */
+/* .jumbotron img {
+  height: 100%;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+} */
+
+/* .jumbotron {
+  margin-top: 80px; 
+}
+
+.jumbotron img {
+  width: 100%;
+  height: 600px;
+  object-fit: cover;
+  display: block;
+} */
+
+:root {
+  --navbar-height: 0px; /* sesuaikan navbar */
+}
+
+/* Wrapper */
+.jumbotron {
+  margin-top: var(--navbar-height);
+}
+
+.jumbotron-wrapper {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - var(--navbar-height));
+  overflow: hidden;
+}
+
+/* Slide */
+.jumbotron-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transform: scale(1.05);
+  transition: opacity 0.8s ease-in-out, transform 1.2s ease;
+}
+
+.jumbotron-slide.active {
+  opacity: 1;
+  transform: scale(1);
+  z-index: 1;
+}
+
+/* Arrow */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  background: rgba(155, 155, 155, 0.092);
+  color: white;
+  border: none;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  font-size: 24px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.arrow:hover {
+  background: rgba(0, 0, 0, 0.65);
+}
+
+.arrow.left {
+  left: 24px;
+}
+
+.arrow.right {
+  right: 24px;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .jumbotron-wrapper {
+    height: 320px;
+  }
+
+  .arrow {
+    width: 38px;
+    height: 38px;
+    font-size: 18px;
+  }
+}

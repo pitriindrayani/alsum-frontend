@@ -14,7 +14,7 @@ function OffcanvasExample({ sidebarStatus, setSidebarStatus }) {
   const logout = (e) => {
     e.preventDefault();
     localStorage.clear();
-    navigate("/");
+    navigate("/1337");
   };
 
   const toggleSidebar = () => {
@@ -24,12 +24,12 @@ function OffcanvasExample({ sidebarStatus, setSidebarStatus }) {
   return (
     <div className='header' style={{ margin: "0px 5px 0px 5px" }}>
       <Row className='match-height' style={{ padding:"8px 15px" }}>
-        <Col xl='12' sm='12' style={{ backgroundColor: "#0abcd7ff", borderRadius:"5px"}}>
+        <Col xl='12' sm='12' style={{ backgroundColor: "#098adaff", borderRadius:"5px"}}>
           <div className='d-sm-flex justify-content-between'>
            
 
             <Dropdown className='ml-auto'>
-              <Dropdown.Toggle style={{ backgroundColor:"#0abcd7ff",border:"none", borderRadius: "12px",
+              <Dropdown.Toggle style={{ backgroundColor:"#098adaff",border:"none", borderRadius: "12px",
                   padding: "5px 5px",display: "flex",alignItems: "center",minHeight: "20px"}}>
                 <div style={{
                   display: "flex",
@@ -70,8 +70,8 @@ function OffcanvasExample({ sidebarStatus, setSidebarStatus }) {
                 style={{ marginTop: "5px", borderRadius:"10px" }}
               >
                 <Dropdown.Item onClick={logout} style={{backgroundColor:"white"}}>
-                  <FaSignOutAlt className="me-2" style={{color:"#0abcd7ff"}}/>
-                  <span style={{color:"#0abcd7ff"}}>Logout</span>
+                  <FaSignOutAlt className="me-2" style={{color:"#098adaff"}}/>
+                  <span style={{color:"#098adaff"}}>Logout</span>
                 </Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
